@@ -14,7 +14,8 @@
         bottom:0px;
         right:0px;
         top:0px;
-        background-color: white;
+        color: #ddd;
+        background-color: #242f3e;
         border-left:1px #666 solid;
         font-family:Helvetica;
       }
@@ -26,10 +27,11 @@
       #info div h1 {
         margin-top:10px;
         font-size:16px;
+        color: #ddd;
       }
       #info div p {
         font-size:14px;
-        color:#333;
+        color: #ddd;
       }
     </style>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js">
@@ -74,7 +76,7 @@
         Planes[Selected].marker.setIcon(getIconForPlane(Planes[Selected]));
         refreshSelectedInfo();
     }
-    
+
     function refreshGeneralInfo() {
         var i = document.getElementById('geninfo');
 
@@ -154,7 +156,87 @@
         var mapOptions = {
             center: new google.maps.LatLng(CenterLat, CenterLon),
             zoom: 5,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            styles: [
+              {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
+              {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
+              {elementType: 'labels.text.fill', stylers: [{color: '#746855'}]},
+              {
+                featureType: 'administrative.locality',
+                elementType: 'labels.text.fill',
+                stylers: [{color: '#d59563'}]
+              },
+              {
+                featureType: 'poi',
+                elementType: 'labels.text.fill',
+                stylers: [{color: '#d59563'}]
+              },
+              {
+                featureType: 'poi.park',
+                elementType: 'geometry',
+                stylers: [{color: '#263c3f'}]
+              },
+              {
+                featureType: 'poi.park',
+                elementType: 'labels.text.fill',
+                stylers: [{color: '#6b9a76'}]
+              },
+              {
+                featureType: 'road',
+                elementType: 'geometry',
+                stylers: [{color: '#38414e'}]
+              },
+              {
+                featureType: 'road',
+                elementType: 'geometry.stroke',
+                stylers: [{color: '#212a37'}]
+              },
+              {
+                featureType: 'road',
+                elementType: 'labels.text.fill',
+                stylers: [{color: '#9ca5b3'}]
+              },
+              {
+                featureType: 'road.highway',
+                elementType: 'geometry',
+                stylers: [{color: '#746855'}]
+              },
+              {
+                featureType: 'road.highway',
+                elementType: 'geometry.stroke',
+                stylers: [{color: '#1f2835'}]
+              },
+              {
+                featureType: 'road.highway',
+                elementType: 'labels.text.fill',
+                stylers: [{color: '#f3d19c'}]
+              },
+              {
+                featureType: 'transit',
+                elementType: 'geometry',
+                stylers: [{color: '#2f3948'}]
+              },
+              {
+                featureType: 'transit.station',
+                elementType: 'labels.text.fill',
+                stylers: [{color: '#d59563'}]
+              },
+              {
+                featureType: 'water',
+                elementType: 'geometry',
+                stylers: [{color: '#17263c'}]
+              },
+              {
+                featureType: 'water',
+                elementType: 'labels.text.fill',
+                stylers: [{color: '#515c6d'}]
+              },
+              {
+                featureType: 'water',
+                elementType: 'labels.text.stroke',
+                stylers: [{color: '#17263c'}]
+              }
+            ]
         };
         Map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 
